@@ -20,4 +20,13 @@ abstract class GameCharacter {
   }
 }
 
-enum SuperAbility { heal, boost, blockRevert, criticalDamage }
+enum SuperAbility {
+  heal,
+  boost,
+  blockRevert,
+  criticalDamage,
+  accepting,
+  lucky,
+  resurrect,
+  stun,
+}

@@ -86,7 +86,7 @@ class Parrot extends Animal with Fly, Jump implements Playable {
   String draw3D(String material) {
     return '3D parrot model made of $material';
   }
-  
+
   @override
   void play() {
     print('$name is playing by mimicking sounds.');

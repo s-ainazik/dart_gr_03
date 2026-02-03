@@ -2,7 +2,7 @@ class Person {
   int _age;
   final String _name;
 
-  Person(this._age, this._name){
+  Person(this._age, this._name) {
     _wasBorn();
   }
 

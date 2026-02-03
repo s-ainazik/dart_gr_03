@@ -1,4 +1,4 @@
-enum Color{black, red, brown, white}
+enum Color { black, red, brown, white }
 
 class Animal {
   // Перенная класса

@@ -119,8 +119,8 @@ void main() {
     print('David is not in the map');
   }
   print('Map length is: ${ages.length}');
-  
-    // Итерация по парам ключ-значение
+
+  // Итерация по парам ключ-значение
   ages.forEach((key, value) {
     print('$key is $value years old.');
   });
@@ -131,11 +131,11 @@ void main() {
     'JP': 'Tokyo',
   };
   print('The capital of France is ${capitals['FR']}');
-  
-  for (var country in capitals.keys) { // перебор ключей
+
+  for (var country in capitals.keys) {
+    // перебор ключей
     print('Country: $country, Capital: ${capitals[country]}');
   }
-
 
   // Коллекции Set - множество
   // неупорядоченная коллекция уникальных элементов

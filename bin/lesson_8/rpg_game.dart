@@ -14,8 +14,23 @@ class RpgGame {
     Medic doc = Medic('Aibolit', 250, 5, 15);
     Medic assistant = Medic('Hasiya', 300, 5, 5);
     Berserk berserk = Berserk('Guts', 250, 25);
+    Golem golem = Golem('Alan', 350, 5);
+    Lucky lucky = Lucky('Fortune', 260, 15);
+    Witcher witcher = Witcher('Geralt', 200);
+    Thor thor = Thor('Thor', 280, 20);
 
-    List<Hero> heroes = [warrior1, warrior2, magic, doc, assistant, berserk];
+    List<Hero> heroes = [
+      warrior1,
+      warrior2,
+      magic,
+      doc,
+      assistant,
+      berserk,
+      golem,
+      lucky,
+      witcher,
+      thor,
+    ];
     _printStatistics(boss, heroes);
     while (!_isGameOver(boss, heroes)) {
       _playRound(boss, heroes);
@@ -46,7 +61,9 @@ class RpgGame {
     boss.chooseDefence();
     boss.attack(heroes);
     for (var hero in heroes) {
-      if(hero.health <= 0 || boss.health <= 0 || hero.ability == boss.defence) {
+      if (hero.health <= 0 ||
+          boss.health <= 0 ||
+          hero.ability == boss.defence) {
         continue;
       }
       hero.attack(boss);

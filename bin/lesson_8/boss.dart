@@ -4,6 +4,7 @@ import 'heroes.dart';
 
 class Boss extends GameCharacter {
   SuperAbility? defence;
+  bool isStunned = false; // добавлено для Thor
   Boss(super.name, super.health, super.damage);
 
   void chooseDefence() {
@@ -15,6 +16,18 @@ class Boss extends GameCharacter {
   }
 
   void attack(List<Hero> heroes) {
+    if (isStunned) {
+      print('Boss is stunned and misses this round!');
+      isStunned = false;
+      return;
+    }
+    Golem? golem; // живой ли голем
+    for (var hero in heroes) {
+      if (hero is Golem && hero.health > 0) {
+        golem = hero;
+        break;
+      }
+    }
     for (var hero in heroes) {
       if (hero.health > 0) {
         if (hero is Berserk && defence != hero.ability) {
@@ -23,6 +36,22 @@ class Boss extends GameCharacter {
           hero.health -= (damage - block);
         } else {
           hero.health -= damage;
+        }
+
+        if (hero is Lucky) {
+          // Lucky — 25% шанс уклонения
+          if (RpgGame.random.nextInt(100) < 25) {
+            print('Lucky ${hero.name} dodged the attack!');
+            continue;
+          }
+        }
+
+        int damageToHero = damage;
+
+        if (golem != null && hero != golem && golem.health > 0) {
+          // Golem принимает 1/5 урона союзников
+          int redirectedDamage = damage ~/ 5;
+          golem.health -= redirectedDamage;
         }
       }
     }
